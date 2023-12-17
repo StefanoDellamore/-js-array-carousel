@@ -24,7 +24,25 @@ const imgList = [
 
 document.querySelector('.card').innerHTML = (imgList[0]);
 
-let contatore = 0
+let contatore = 0;
+let swipe = true
+
+let clock = setInterval(() => {
+    if (contatore < imgList.length -1) {
+        contatore += 1;
+        console.log ('contatore', contatore, typeof contatore);
+        document.querySelector('.card').innerHTML = imgList[contatore];
+    }
+    else if (contatore == imgList.length -1) {
+        contatore = 0;
+        document.querySelector ('.card').innerHTML = imgList[contatore];
+    }
+},
+3000);
+
+document.getElementById ('reset').addEventListener ('click', function(){
+    clearInterval (clock);
+});
 
 //definire bottoni in variabili
 
@@ -48,6 +66,6 @@ buttonBack.addEventListener ('click', function() {
     if ((contatore !== imgList.lenght) && (contatore !== 0)){
         contatore -= 1;
         console.log ('contatore', contatore, typeof contatore);
-        document.querySelector ('.card').innerHTML = (imgList[contatore]);
+        document.querySelector ('card').innerHTML = (imgList[contatore]);
     }
-})
+});
